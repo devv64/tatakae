@@ -156,6 +156,8 @@ function animate(){
     c.fillRect(0,0,canvas.width,canvas.height)
     background.update()
     shop.update()
+    c.fillStyle = 'rgba(255, 255, 255, 0.15)'
+    c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
     enemy.update()
 
@@ -236,7 +238,9 @@ window.addEventListener('keydown', (event) => {
             player.lastKey = 'a'
             break
         case 'w':
-            player.velocity.y = -20
+            if(player.velocity.y == 0) {
+                player.velocity.y = -20
+            }
             break
         case ' ':
             player.attack()
@@ -252,7 +256,9 @@ window.addEventListener('keydown', (event) => {
             enemy.lastKey = 'ArrowLeft'
             break
         case 'ArrowUp':
-            enemy.velocity.y = -20
+            if(enemy.velocity.y == 0) {
+                enemy.velocity.y = -20
+            }
             break
         case 'ArrowDown':
             enemy.attack()
